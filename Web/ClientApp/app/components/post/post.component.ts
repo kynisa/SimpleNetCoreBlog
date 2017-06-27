@@ -43,6 +43,9 @@ export class PostComponent extends PagingComponent implements OnInit {
 
     onNewItemsAdded(items: any) {
         this.comments.push(...items);
+        if (items.length < this.limit) {
+            this.addCommentVisible = true;
+        }
     }
 
     onNewItemsMissing() {
