@@ -1,0 +1,22 @@
+<div id="cover" [ngClass]="{'col-md-12':coverVisible, 'col-md-4':!coverVisible}">
+    <header>
+        <div class="content text-center">
+            <img (click)="showHideCover()" class="img-circle img-thumbnail" alt="MyPhoto" height="150" width="150" src="img/avatar.jpg">
+            <h1>Pavlo Barmak</h1>
+            <p>
+                <a (click)="hideCover()" [routerLink]="['/']" class="btn btn-default">Blog</a>
+                <a (click)="hideCover()" [routerLink]="['/post', 1]" class="btn btn-default">About</a>
+                <a href="https://www.linkedin.com/in/pavlo-barmak-b89a9560/" target="_blank" class="btn btn-default">Contact</a>
+            </p>
+        </div>
+    </header>
+</div>
+<div class="col-md-6 col-md-offset-4 padding-md" [ngClass]="{'hidden':coverVisible, 'show':!coverVisible}">
+    <router-outlet class="padding-md"></router-outlet>
+    <footer>
+        <p class="col-md-12 text-center"> &copy; Pavlo Barmak {{currentYear}}. All rights reserved</p>
+    </footer>
+</div>
+<div class="error">
+    <div *ngFor="let error of errors" class="alert alert-danger text-center" role="alert">{{ error }}</div>
+</div>

@@ -1,0 +1,37 @@
+.error {
+    position: fixed;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    z-index: 10;
+}
+
+.padding-md {
+    padding: 3em;
+}
+
+#cover {
+    background: url('img/cover.jpg') no-repeat center center scroll;
+    background-size: cover;
+}
+
+#cover header { 
+    height: 100%;
+    color: white;
+}
+
+@media (min-width: 992px) {
+    #cover {
+        height: 100%;
+        position: fixed;
+        overflow: hidden;
+        margin: 0;
+        z-index: 1;
+    }
+    #cover header .content {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+

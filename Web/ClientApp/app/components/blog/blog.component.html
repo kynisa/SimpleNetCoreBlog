@@ -1,0 +1,15 @@
+<section *ngFor="let post of posts">
+    <header>
+        <h3 class="text-primary">{{ post.title }}</h3>    
+    </header>
+    <div [innerHTML]="post.contentPreview | safeHtml"></div>
+    <footer>
+        <h4>
+            <span class="text-primary">Posted at {{ post.createdOn | date:'medium' }}</span>
+            <a [routerLink]="['/post', post.id]" class="btn btn-primary pull-right">Read more</a>
+        </h4>
+        <hr />
+    </footer>
+</section>
+
+

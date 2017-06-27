@@ -1,0 +1,37 @@
+<section>
+    <header>
+        <h3 class="text-primary">{{ post.title }}</h3>
+    </header>
+    <div [innerHTML]="post?.content | safeHtml"></div>
+    <footer>
+        <h4>
+            <span class="text-primary">Posted at {{ post.createdOn | date:'medium' }}</span>
+            <button class="btn btn-primary pull-right">
+                <span>Comments</span>
+                <span class="badge">{{ post.commentsCount }}</span>
+            </button>
+        </h4>
+        <hr />
+        <ul class="media-list">
+            <li class="media" *ngFor="let comment of comments">
+                <div class="media-left"></div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ comment.author }}<small class="text-primary"> at {{ comment.createdOn | date:'medium' }} replied : </small></h4>
+                    <p>{{ comment.content }}</p>
+                    <hr />
+                </div>
+            </li>
+        </ul>
+        <form *ngIf="addCommentVisible" (ngSubmit)="addComment()" class="col-md-8">
+            <div class="form-group">
+                <label for="newCommentName">Your name</label>
+                <input type="text" class="form-control" id="newCommentName" name="newCommentName" [(ngModel)]="newComment.author">
+            </div>
+            <div class="form-group">
+                <label for="newCommentContent">Your reply</label>
+                <textarea class="form-control" id="newCommentContent" name="newCommentContent" [(ngModel)]="newComment.content" cols="40" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+    </footer>
+</section>
